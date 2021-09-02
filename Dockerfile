@@ -36,7 +36,7 @@ USER ${NB_USER}
 
 CMD ["/bin/sh","-c","#(nop) ", "USER [jovyan]"]
 #ENTRYPOINT ["tini","--"]
-ENTRYPOINT ["tini","--","&&","shift","2","jupyter","notebook"]
+ENTRYPOINT ["tini","--","&&","shift","2","&&","jupyter","notebook"]
 
 
 

@@ -1,5 +1,5 @@
 # docker build -t tmp_mybinder_demo .
-# docker run -it tmp_mybinder_demo jupyter notebook --aa --bb --cc
+# docker run -it tmp_mybinder_demo jupyter notebook --certfile=mycert.pem
 FROM jupyter/scipy-notebook:cf6258237ff9
 
 ARG NB_USER=jovyan

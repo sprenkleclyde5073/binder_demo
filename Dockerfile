@@ -21,9 +21,7 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
-RUN apt update
-RUN apt install -y tor
-RUN apt install -y openvpn
+CMD ["bash","jupyter","notebook"]
 
 # It must accept command arguments. The Dockerfile will effectively be launched as:
 # docker run <image> jupyter notebook <arguments from the mybinder launcher>

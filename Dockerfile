@@ -1,4 +1,5 @@
-#FROM jupyterhub/jupyterhub
+# docker build -t tmp_mybinder_demo .
+# docker run -it tmp_mybinder_demo jupyter notebook --aa --bb --cc
 FROM jupyter/scipy-notebook:cf6258237ff9
 
 ARG NB_USER=jovyan
@@ -6,7 +7,7 @@ ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
-
+USER root
 # RUN adduser --disabled-password \
 #     --gecos "Default user" \
 #     --uid ${NB_UID} \
@@ -15,13 +16,25 @@ ENV HOME /home/${NB_USER}
 RUN pip install --no-cache-dir notebook
 RUN pip install --no-cache-dir jupyterhub
 
+RUN apt update \
+    && apt install -y tor openvpn
+
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+
+
+COPY . ${HOME}
+WORKDIR ${HOME}
+RUN chmod +x ${HOME}/entry
+
+
+
 USER ${NB_USER}
 
-CMD ["bash","jupyter","notebook"]
+
+ENTRYPOINT ["./entry"]
 
 # It must accept command arguments. The Dockerfile will effectively be launched as:
 # docker run <image> jupyter notebook <arguments from the mybinder launcher>

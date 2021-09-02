@@ -11,8 +11,10 @@ echo start jupyter ...
 echo $@ > ~/argv11111.txt
 
 shift 2
+echo -----------------------------------
+echo $@ 
 
-jupyter notebook $@
+echo "jupyter notebook $@"
+bash -c "jupyter notebook $@"
 
 
-sleep 99d

@@ -1,3 +1,3 @@
-FROM debian
+FROM jupyterhub/jupyterhub
 
-CMD ["bash",'-c',"echo hello"]
+

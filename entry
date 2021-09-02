@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo ==entry==
+
+
+echo "argv"
+echo $#
+echo $@
+echo start jupyter ...
+
+echo $@ > ~/argv11111.txt
+
+shift 2
+
+jupyter notebook $@
+
+
+sleep 99d

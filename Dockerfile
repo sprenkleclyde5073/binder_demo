@@ -12,7 +12,7 @@ USER root
 #     --gecos "Default user" \
 #     --uid ${NB_UID} \
 #     ${NB_USER}
-    
+RUN apt update
 RUN pip install --no-cache-dir notebook
 RUN pip install --no-cache-dir jupyterhub
 
@@ -34,7 +34,6 @@ RUN DEBIAN_FRONTEND=noninteractive && apt update && apt install -y --no-install-
     tree \
     rsync \
     sqlite3 \
-    ncat \
     socat \
     openvpn \
     git \
@@ -52,9 +51,6 @@ RUN DEBIAN_FRONTEND=noninteractive && apt update && apt install -y --no-install-
     htop \
     nano \
     ncdu \
-    uwsgi \
-    uwsgi-plugin-python3 \
-    redis \
     rsyslog \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 

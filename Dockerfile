@@ -44,7 +44,6 @@ RUN DEBIAN_FRONTEND=noninteractive && apt update && apt install -y --no-install-
     busybox \
     unzip \
     python3-venv \
-    python3-distutils \
     gcc \
     g++ \
     make \

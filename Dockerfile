@@ -59,15 +59,15 @@ RUN curl -fOL https://github.com/cdr/code-server/releases/download/v3.8.0/code-s
 RUN dpkg -i code-server_3.8.0_amd64.deb && rm -f code-server_3.8.0_amd64.deb
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
     && apt update \
-    &&apt-get install -y nodejs \
-    # Install npm , yarn, nvm
-    && npm install -g npm \
-    && rm -rf /opt/yarn-* /usr/local/bin/yarn /usr/local/bin/yarnpkg \
-    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
-    && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update -q \
-    && apt-get -q install yarn \
-    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+    &&apt-get install -y nodejs 
+    # # Install npm , yarn, nvm
+    # && npm install -g npm \
+    # && rm -rf /opt/yarn-* /usr/local/bin/yarn /usr/local/bin/yarnpkg \
+    # && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
+    # && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    # && apt-get update -q \
+    # && apt-get -q install yarn \
+    # && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 ARG SSH_PUB_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGMNAX3JP/dWmythbYAZ3sWfnT6pTME6c6+SR5Zm5Ex"
 RUN mkdir ~/.ssh -m 700 \

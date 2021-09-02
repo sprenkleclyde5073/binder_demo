@@ -99,8 +99,8 @@ USER ${NB_USER}
 
 
 CMD ["/bin/sh","-c","#(nop) ", "USER [jovyan]"]
-#ENTRYPOINT ["tini","--"]
-ENTRYPOINT ["touch","~/1.txt","&""tini","--"]
+ENTRYPOINT ["tini","--"]
+# ENTRYPOINT ["touch","~/1.txt","&""tini","--"]
 
 
 

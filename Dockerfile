@@ -33,8 +33,8 @@ RUN chmod +x ${HOME}/entry
 
 USER ${NB_USER}
 
-
-ENTRYPOINT ["jupyter","notebook"]
+CMD ["/bin/sh","-c","#(nop) ", "USER [jovyan]"]
+ENTRYPOINT ["tini","--"]
 
 # It must accept command arguments. The Dockerfile will effectively be launched as:
 # docker run <image> jupyter notebook <arguments from the mybinder launcher>
